@@ -1,0 +1,19 @@
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: general-dev-workspace:local
+    container_name: general-dev-workspace
+    working_dir: /workspace
+    command: sleep infinity
+    init: true
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - .:/workspace
+      - dev-home:/home/dev
+
+volumes:
+  dev-home:
